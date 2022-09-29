@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
-require("dotenv").config();
+const env = require("dotenv");
 
-const InitiateMongoServer = async () => {
+env.config({ path: "./config/.env" });
+
+const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.DATABASE_URI, {
+        await mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
@@ -14,4 +16,4 @@ const InitiateMongoServer = async () => {
     }
 };
 
-module.exports = InitiateMongoServer;
+module.exports = connectDB;

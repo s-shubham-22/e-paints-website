@@ -1,21 +1,25 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-
-const user = require("./routes/user");
-const InitiateMongoServer = require("./db");
-
-require("dotenv").config();
-
 const app = express();
+const bodyParser = require("body-parser");
+const env = require("dotenv");
+const cookieParser = require("cookie-parser");
+
+const userRoute = require("./routes/User.route");
+const connectDB = require("./config/db");
+
+env.config({ path: "./config/.env" });
 
 // DB_CONNECTION
-InitiateMongoServer();
+connectDB();
 
 // PORT
 const PORT = process.env.PORT || 4000;
 
 // Middlewares
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser());
+app.use(express.static(__dirname + '/public'));
 
 // Routes
 app.get("/", (req, res) => {
@@ -23,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes Middleware
-app.use('/user', user)
+app.use('/user/', userRoute)
 
 
 app.listen(PORT, (req, res) => {
