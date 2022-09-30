@@ -5,6 +5,7 @@ const env = require("dotenv");
 const cookieParser = require("cookie-parser");
 
 const userRoute = require("./routes/User.route");
+const productRoute = require("./routes/Admin.Product.route");
 const connectDB = require("./config/db");
 
 env.config({ path: "./config/.env" });
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 
 // Routes Middleware
 app.use('/user/', userRoute)
+app.use('/admin/product', productRoute)
 
 
 app.listen(PORT, (req, res) => {
