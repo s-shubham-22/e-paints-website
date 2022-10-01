@@ -8,7 +8,7 @@ const userRoute = require("./routes/User.route");
 const productRoute = require("./routes/Admin.Product.route");
 const connectDB = require("./config/db");
 
-env.config({ path: "./config/.env" });
+env.config({ path: "./config.env" });
 
 // DB_CONNECTION
 connectDB();
@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 4000;
 
 // Middlewares
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 
