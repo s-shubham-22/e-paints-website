@@ -1,37 +1,45 @@
-const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
-const env = require("dotenv");
+const express = require('express')
+const app = express()
+const dotenv = require('dotenv')
+const bodyParser = require('body-parser')
 const cookieParser = require("cookie-parser");
+const connectDB = require('./config/db');
+const passport = require('passport');
+const session = require('express-session');
 
-const userRoute = require("./routes/User.route");
-const productRoute = require("./routes/Admin.Product.route");
-const connectDB = require("./config/db");
+const MongoStore = require('connect-mongo');
 
-env.config({ path: "./config.env" });
+// const indexRouter = require('./routes/index');
+const authRouter = require('./routes/Auth.routes');
 
-// DB_CONNECTION
+dotenv.config({ path: './config/config.env' })
+PORT = process.env.PORT || 4000
+
 connectDB();
 
-// PORT
-const PORT = process.env.PORT || 4000;
+app.set('view engine', 'ejs')
 
 // Middlewares
+app.use('/', express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser());
-app.use(express.static(__dirname + '/public'));
+app.use(session({
+    secret: "squirrel",
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URI,
+        touchAfter: 24 * 3600, // Lazy update session
+    }),
+    ttl: 24 * 60 * 60,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.authenticate('session'));
 
-// Routes
-app.get("/", (req, res) => {
-    res.json({ message: "API Working" });
-});
+app.get('/', (req, res) => res.send('Root route'))
 
-// Routes Middleware
-app.use('/user/', userRoute)
-app.use('/admin/product', productRoute)
+app.use('/api/auth', authRouter);
 
-
-app.listen(PORT, (req, res) => {
-    console.log(`Server Started at PORT ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
