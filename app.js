@@ -13,6 +13,7 @@ const MongoStore = require('connect-mongo');
 const authRouter = require('./routes/Auth.routes');
 const adminRouter = require('./routes/Admin.routes');
 const adminBrandRouter = require('./routes/Admin.brand.routes');
+const adminCategoryRouter = require('./routes/Admin.category.routes');
 
 dotenv.config({ path: './config/config.env' })
 PORT = process.env.PORT || 4000
@@ -45,5 +46,6 @@ app.get('/', (req, res) => res.send('Root route'))
 app.use('/api/auth', authRouter);
 app.use('/admin', adminRouter);
 app.use('/admin/brand', adminBrandRouter);
+app.use('/admin/category', adminCategoryRouter);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
