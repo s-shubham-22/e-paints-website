@@ -12,6 +12,7 @@ const MongoStore = require('connect-mongo');
 // const indexRouter = require('./routes/index');
 const authRouter = require('./routes/Auth.routes');
 const adminRouter = require('./routes/Admin.routes');
+const adminSliderRouter = require('./routes/Admin.slider.routes');
 const adminBrandRouter = require('./routes/Admin.brand.routes');
 const adminCategoryRouter = require('./routes/Admin.category.routes');
 
@@ -45,6 +46,7 @@ app.get('/', (req, res) => res.send('Root route'))
 
 app.use('/api/auth', authRouter);
 app.use('/admin', adminRouter);
+app.use('/admin/slider', adminSliderRouter);
 app.use('/admin/brand', adminBrandRouter);
 app.use('/admin/category', adminCategoryRouter);
 
