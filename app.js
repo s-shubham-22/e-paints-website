@@ -11,6 +11,8 @@ const MongoStore = require('connect-mongo');
 
 // const indexRouter = require('./routes/index');
 const authRouter = require('./routes/Auth.routes');
+const adminRouter = require('./routes/Admin.routes');
+const adminBrandRouter = require('./routes/Admin.brand.routes');
 
 dotenv.config({ path: './config/config.env' })
 PORT = process.env.PORT || 4000
@@ -41,5 +43,7 @@ app.use(passport.authenticate('session'));
 app.get('/', (req, res) => res.send('Root route'))
 
 app.use('/api/auth', authRouter);
+app.use('/admin', adminRouter);
+app.use('/admin/brand', adminBrandRouter);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

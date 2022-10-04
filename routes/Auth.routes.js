@@ -14,7 +14,7 @@ router.get('/login', isNotLoggedIn, getLogin);
 router.get('/signup', isNotLoggedIn, getSignup);
 router.get("/user", isLoggedIn, getUser);
 router.get("/admin", isLoggedIn, isAdmin, getUser);
-router.get('/logout', logoutUser);
+router.get('/logout', isLoggedIn, logoutUser);
 router.post('/login', userLoginValidationRules, validate, loginUser);
 router.post('/signup', userSignupValidationRules, validate, signupUser);
 
