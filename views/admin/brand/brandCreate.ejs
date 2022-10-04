@@ -9,16 +9,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>E-Paints - Slider</title>
+    <title>E-Paints - Brand</title>
 
     <!-- Custom fonts for this template-->
-    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
 
 </head>
 
@@ -28,7 +29,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <%- include('partials/sidebar.ejs', { currentMenu: 'slider' }); %>
+        <%- include('../partials/sidebar.ejs', { currentMenu: 'brand' }); %>
             <!-- End of Sidebar -->
 
             <!-- Content Wrapper -->
@@ -38,36 +39,29 @@
                 <div id="content">
 
                     <!-- Topbar -->
-                    <%- include('partials/topbar.ejs', {first_name: user.first_name, last_name: user.last_name}) %>
+                    <%- include('../partials/topbar.ejs', {first_name: user.first_name, last_name: user.last_name}) %>
                         <!-- End of Topbar -->
 
                         <!-- Begin Page Content -->
                         <div class="card shadow mb-4 mx-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Slider</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Brand</h6>
                             </div>
                             <div class="card-body">
-                                <form action="<%= slider._id %> " method="POST" enctype="multipart/form-data">
+                                <form action="create" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <label for="name">Slider Title <strong class="text-danger">*</strong></label>
-                                        <input type="text" class="form-control" value="<%= slider.name%>" id="name"
-                                            name="name" aria-describedby="emailHelp" required="">
+                                        <label for="name">Brand Title <strong class="text-danger">*</strong></label>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            aria-describedby="emailHelp" required="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="name">Slider Description <strong
-                                                class="text-danger">*</strong></label>
-                                        <textarea name="description" class="form-control" id="description" cols="30"
-                                            rows="4" aria-describedby="emailHelp"
-                                            required=""><%= slider.description%></textarea>
+                                        <label for="image">Brand Image <strong class="text-danger">*</strong></label>
+                                        <input type="file" class="form-control-file" id="image" name="image"
+                                            required="">
+                                        <br><img id="preview_img" src="" alt="your image" width="150px"
+                                            hidden="hidden"><br>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="image">Slider Image <strong class="text-danger">*</strong></label>
-                                        <input type="file" class="form-control-file" value="<%= slider.image%>"
-                                            id="image" name="image">
-                                        <br><img id="preview_img" src="/uploads/slider/images/<%= slider.image%>"
-                                            alt="Slider Image" alt="your image" width="150px"><br>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -118,14 +112,17 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="/js/sb-admin-2.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Datatables Script -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
     <script>
         $('#image').change(function () {

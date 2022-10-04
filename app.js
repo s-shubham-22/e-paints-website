@@ -15,6 +15,7 @@ const adminRouter = require('./routes/Admin.routes');
 const adminSliderRouter = require('./routes/Admin.slider.routes');
 const adminBrandRouter = require('./routes/Admin.brand.routes');
 const adminCategoryRouter = require('./routes/Admin.category.routes');
+const adminProductRouter = require('./routes/Admin.product.routes');
 
 dotenv.config({ path: './config/config.env' })
 PORT = process.env.PORT || 4000
@@ -49,5 +50,6 @@ app.use('/admin', adminRouter);
 app.use('/admin/slider', adminSliderRouter);
 app.use('/admin/brand', adminBrandRouter);
 app.use('/admin/category', adminCategoryRouter);
+app.use('/admin/product', adminProductRouter);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

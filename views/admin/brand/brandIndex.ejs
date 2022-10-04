@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>E-Paints - Category</title>
+    <title>E-Paints - Brand</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,7 +29,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <%- include('partials/sidebar.ejs', { currentMenu: 'category' }); %>
+        <%- include('../partials/sidebar.ejs', { currentMenu: 'brand' }); %>
             <!-- End of Sidebar -->
 
             <!-- Content Wrapper -->
@@ -39,19 +39,19 @@
                 <div id="content">
 
                     <!-- Topbar -->
-                    <%- include('partials/topbar.ejs', {first_name: user.first_name, last_name: user.last_name}) %>
+                    <%- include('../partials/topbar.ejs', {first_name: user.first_name, last_name: user.last_name}) %>
                         <!-- End of Topbar -->
 
                         <!-- Begin Page Content -->
                         <div class="d-flex justify-content-end mx-4">
                             <a href="create">
-                                <button class="btn btn-primary mb-4">Add Category</button>
+                                <button class="btn btn-primary mb-4">Add Brand</button>
                             </a>
                         </div>
 
                         <div class="card shadow mb-4 mx-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Category</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Brand</h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -59,30 +59,35 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Category Name</th>
+                                                <th>Brand Name</th>
+                                                <th>Image</th>
                                                 <th>Status</th>
                                                 <th>Edit</th>
                                                 <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <% for(var i=0; i<categories.length; i++){ %>
+                                            <% for(var i=0; i<brands.length; i++){ %>
                                                 <tr>
                                                     <td>
                                                         <%= i+1 %>
                                                     </td>
                                                     <td>
-                                                        <%= categories[i].name %>
+                                                        <%= brands[i].name %>
+                                                    </td>
+                                                    <td class="text-center"><img
+                                                            src="/uploads/brand/images/<%= brands[i].image %>"
+                                                            height="100px">
                                                     </td>
                                                     <td class="text-center">
-                                                        <input type="checkbox" id="status-<%= categories[i]._id%>"
-                                                            <%=categories[i].status===true ? 'checked' : '' %>
-                                                        onclick="changeStatus('<%= categories[i]._id%>');" >
+                                                        <input type="checkbox" id="status-<%= brands[i]._id%>"
+                                                            <%=brands[i].status===true ? 'checked' : '' %>
+                                                        onclick="changeStatus('<%= brands[i]._id%>');" >
                                                     </td>
-                                                    <td><a href="edit/<%= categories[i]._id %>"><button
+                                                    <td><a href="edit/<%= brands[i]._id %>"><button
                                                                 class="btn btn-primary">Edit</button></a></td>
                                                     <td>
-                                                        <form action="delete/<%= categories[i]._id %>" method="get"
+                                                        <form action="delete/<%= brands[i]._id %>" method="get"
                                                             onsubmit="return confirmation();">
                                                             <button type="submit" class="btn btn-danger">
                                                                 <i class="fas fa-trash"></i>
@@ -95,7 +100,8 @@
                                         <tfoot>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Category Name</th>
+                                                <th>Brand Name</th>
+                                                <th>Image</th>
                                                 <th>Status</th>
                                                 <th>Edit</th>
                                                 <th>Delete</th>
@@ -176,7 +182,7 @@
         function changeStatus(id) {
             var status = $('#status-' + id).is(':checked');
             $.ajax({
-                url: "/admin/category/changeStatus/" + id,
+                url: "/admin/brand/changeStatus/" + id,
                 type: 'POST',
                 data: {
                     status: status,
@@ -187,12 +193,12 @@
             });
         }
 
-        function deleteCategory(id) {
+        function deleteBrand(id) {
             $.ajax({
-                url: "/admin/category/delete/" + id,
+                url: "/admin/brand/delete/" + id,
                 type: 'POST',
                 success: function (response) {
-                    console.log('success, category deleted');
+                    console.log('success, brand deleted');
                 }
             });
         }

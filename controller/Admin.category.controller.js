@@ -10,7 +10,7 @@ exports.getIndex = (req, res) => {
             return;
         }
         const categories = await Category.find();
-        res.render('admin/categoryIndex.ejs', { title: 'Admin', user: row, categories: categories });
+        res.render('admin/category/categoryIndex.ejs', { title: 'Admin', user: row, categories: categories });
     });
 }
 
@@ -20,7 +20,7 @@ exports.getCreate = (req, res) => {
             console.log(err);
             return;
         }
-        res.render('admin/categoryCreate.ejs', { title: 'Admin', user: row });
+        res.render('admin/category/categoryCreate.ejs', { title: 'Admin', user: row });
     });
 }
 
@@ -45,7 +45,7 @@ exports.getEdit = async (req, res) => {
                 console.log(err);
                 return;
             }
-            res.render('admin/categoryEdit.ejs', { title: 'Admin', user: row, category: category });
+            res.render('admin/category/categoryEdit.ejs', { title: 'Admin', user: row, category: category });
         });
     } catch (err) {
         console.log(err);

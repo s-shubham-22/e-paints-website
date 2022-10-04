@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>E-Paints - Slider</title>
+    <title>E-Paints - Product</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,7 +29,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <%- include('partials/sidebar.ejs', { currentMenu: 'slider' }); %>
+        <%- include('../partials/sidebar.ejs', { currentMenu: 'product' }); %>
             <!-- End of Sidebar -->
 
             <!-- Content Wrapper -->
@@ -39,29 +39,65 @@
                 <div id="content">
 
                     <!-- Topbar -->
-                    <%- include('partials/topbar.ejs', {first_name: user.first_name, last_name: user.last_name}) %>
+                    <%- include('../partials/topbar.ejs', {first_name: user.first_name, last_name: user.last_name}) %>
                         <!-- End of Topbar -->
 
                         <!-- Begin Page Content -->
                         <div class="card shadow mb-4 mx-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Slider</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Product</h6>
                             </div>
                             <div class="card-body">
                                 <form action="create" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <label for="name">Slider Title <strong class="text-danger">*</strong></label>
+                                        <label for="name">Product Title <strong class="text-danger">*</strong></label>
                                         <input type="text" class="form-control" id="name" name="name"
                                             aria-describedby="emailHelp" required="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="name">Slider Description <strong
+                                        <label for="category">Category <strong class="text-danger">*</strong></label>
+                                        <select name="category" id="category" class="form-control" required="">
+                                            <% categories.forEach(function(category){ %>
+                                                <option value="<%= category._id %>">
+                                                    <%= category.name %>
+                                                </option>
+                                                <% }); %>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="brand">Brand <strong class="text-danger">*</strong></label>
+                                        <select name="brand" id="brand" class="form-control" required="">
+                                            <% brands.forEach(function(brand){ %>
+                                                <option value="<%= brand._id %>">
+                                                    <%= brand.name %>
+                                                </option>
+                                                <% }); %>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="stock">Stock <strong class="text-danger">*</strong></label>
+                                        <input type="number" min="0" class="form-control" id="stock" name="stock"
+                                            aria-describedby="emailHelp" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">Price <strong class="text-danger">*</strong></label>
+                                        <input type="number" min="0" class="form-control" id="price" name="price"
+                                            aria-describedby="emailHelp" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sale_price">Sale Price <strong
+                                                class="text-danger">*</strong></label>
+                                        <input type="number" min="0" class="form-control" id="sale_price"
+                                            name="sale_price" aria-describedby="emailHelp" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Product Description <strong
                                                 class="text-danger">*</strong></label>
                                         <textarea name="description" class="form-control" id="description" cols="30"
                                             rows="4" aria-describedby="emailHelp" required=""></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="image">Slider Image <strong class="text-danger">*</strong></label>
+                                        <label for="image">Product Image <strong class="text-danger">*</strong></label>
                                         <input type="file" class="form-control-file" id="image" name="image"
                                             required="">
                                         <br><img id="preview_img" src="" alt="your image" width="150px"

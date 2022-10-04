@@ -11,7 +11,7 @@ exports.getIndex = (req, res) => {
             return;
         }
         const sliders = await Slider.find();
-        res.render('admin/sliderIndex.ejs', { title: 'Admin', user: row, sliders: sliders });
+        res.render('admin/slider/sliderIndex.ejs', { title: 'Admin', user: row, sliders: sliders });
     });
 }
 
@@ -21,7 +21,7 @@ exports.getCreate = (req, res) => {
             console.log(err);
             return;
         }
-        res.render('admin/sliderCreate.ejs', { title: 'Admin', user: row });
+        res.render('admin/slider/sliderCreate.ejs', { title: 'Admin', user: row });
     });
 }
 
@@ -47,7 +47,7 @@ exports.getEdit = async (req, res) => {
                 console.log(err);
                 return;
             }
-            res.render('admin/sliderEdit.ejs', { title: 'Admin', user: row, slider: slider });
+            res.render('admin/slider/sliderEdit.ejs', { title: 'Admin', user: row, slider: slider });
         });
     } catch (err) {
         console.log(err);

@@ -30,7 +30,7 @@ const SliderSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add a description'],
         trim: true,
-        maxlength: [500, 'Description cannot be more than 500 characters'],
+        maxlength: [1000, 'Description cannot be more than 1000 characters'],
     }
 }, { timestamps: true });
 

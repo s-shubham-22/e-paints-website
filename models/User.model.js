@@ -30,6 +30,12 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         minlength: 5
     },
+    address: [{
+        type: String,
+        required: false,
+        trim: true,
+        minlength: 5
+    }],
     hashed_password: {
         type: String,
         required: true,

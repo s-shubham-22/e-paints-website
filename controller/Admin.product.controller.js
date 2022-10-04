@@ -2,7 +2,9 @@ const slug = require('slug');
 const fs = require('fs');
 
 const User = require('../models/User.model');
+const Category = require('../models/Category.model');
 const Brand = require('../models/Brand.model');
+const Product = require('../models/Product.model');
 
 exports.getIndex = (req, res) => {
     User.findOne({ username: req.user.username }, async (err, row) => {
@@ -10,8 +12,10 @@ exports.getIndex = (req, res) => {
             console.log(err);
             return;
         }
+        const products = await Product.find();
+        const categories = await Category.find();
         const brands = await Brand.find();
-        res.render('admin/brand/brandIndex.ejs', { title: 'Admin', user: row, brands: brands });
+        res.render('admin/product/productIndex.ejs', { title: 'Admin', user: row, products: products, categories: categories, brands: brands });
     });
 }
 
@@ -21,33 +25,38 @@ exports.getCreate = (req, res) => {
             console.log(err);
             return;
         }
-        res.render('admin/brand/brandCreate.ejs', { title: 'Admin', user: row });
+        const categories = await Category.find();
+        const brands = await Brand.find();
+        res.render('admin/product/productCreate.ejs', { title: 'Admin', user: row, categories: categories, brands: brands });
     });
 }
 
 exports.postCreate = async (req, res) => {
     try {
-        const { name } = req.body;
+        const { name, category, brand, price, sale_price, stock, description } = req.body;
         const image = req.file.filename;
         const slugName = slug(name, { lower: true });
-        const brand = new Brand({ name, image, slug: slugName });
-        await brand.save();
-        res.redirect('/admin/brand');
+        const product = new Product({ name, image, slug: slugName, category, brand, price, sale_price, stock, description });
+        await product.save();
+        console.log(product);
+        res.redirect('/admin/product');
     } catch (err) {
         console.log(err);
-        res.status(500).json({ err: 'Server Error' });
+        res.status(500).json({ err: err });
     }
 }
 
 exports.getEdit = async (req, res) => {
     try {
-        const brand = await Brand.findById(req.params.id);
+        const product = await Product.findById(req.params.id);
         User.findOne({ username: req.user.username }, async (err, row) => {
             if (err) {
                 console.log(err);
                 return;
             }
-            res.render('admin/brand/brandEdit.ejs', { title: 'Admin', user: row, brand: brand });
+            const categories = await Category.find();
+            const brands = await Brand.find();
+            res.render('admin/product/productEdit.ejs', { title: 'Admin', user: row, product: product, categories: categories, brands: brands });
         });
     } catch (err) {
         console.log(err);
@@ -57,23 +66,23 @@ exports.getEdit = async (req, res) => {
 
 exports.postEdit = async (req, res) => {
     try {
-        const { name } = req.body;
+        const { name, category, brand, price, sale_price, stock, description } = req.body;
         const image = req.file.filename;
         const slugName = slug(name, { lower: true });
-        const brand = await Brand.findByIdAndUpdate(req.params.id, { name, image, slug: slugName });
-        await brand.save();
-        res.redirect('/admin/brand');
+        const product = await Product.findByIdAndUpdate(req.params.id, { name, image, slug: slugName, category, brand, price, sale_price, stock, description });
+        await product.save();
+        res.redirect('/admin/product');
     } catch (err) {
         console.log(err);
-        res.status(500).json({ err: 'Server Error' });
+        res.status(500).json({ err: err });
     }
 }
 
 exports.postDelete = async (req, res) => {
     try {
-        await Brand.findByIdAndDelete(req.params.id)
+        await Product.findByIdAndDelete(req.params.id)
             .then(() => {
-                res.redirect('/admin/brand');
+                res.redirect('/admin/product');
             })
             .catch(err => {
                 console.log(err);
@@ -88,10 +97,10 @@ exports.postDelete = async (req, res) => {
 exports.changeStatus = async (req, res) => {
     try {
         const { id } = req.params;
-        const brand = await Brand.findById(id);
-        brand.status = !brand.status;
-        await brand.save();
-        res.json({ status: brand.status });
+        const product = await Product.findById(id);
+        product.status = !product.status;
+        await product.save();
+        res.json({ status: product.status });
     } catch (err) {
         console.log(err);
         res.status(500).json({ err: 'Server Error' });
