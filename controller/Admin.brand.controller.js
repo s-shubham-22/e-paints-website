@@ -35,7 +35,7 @@ exports.postCreate = async (req, res) => {
         res.redirect('/admin/brand');
     } catch (err) {
         console.log(err);
-        res.status(500).json({ err: 'Server Error' });
+        res.status(500).json({ err: err });
     }
 }
 
@@ -51,7 +51,7 @@ exports.getEdit = async (req, res) => {
         });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ err: 'Server Error' });
+        res.status(500).json({ err: err });
     }
 }
 
@@ -65,7 +65,7 @@ exports.postEdit = async (req, res) => {
         res.redirect('/admin/brand');
     } catch (err) {
         console.log(err);
-        res.status(500).json({ err: 'Server Error' });
+        res.status(500).json({ err: err });
     }
 }
 
@@ -77,11 +77,11 @@ exports.postDelete = async (req, res) => {
             })
             .catch(err => {
                 console.log(err);
-                res.status(500).json({ err: 'Server Error' });
+                res.status(500).json({ err: err });
             });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ err: 'Server Error' });
+        res.status(500).json({ err: err });
     }
 }
 
@@ -94,6 +94,6 @@ exports.changeStatus = async (req, res) => {
         res.json({ status: brand.status });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ err: 'Server Error' });
+        res.status(500).json({ err: err });
     }
 }
