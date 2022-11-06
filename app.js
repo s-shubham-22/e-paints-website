@@ -9,8 +9,13 @@ const session = require('express-session');
 
 const MongoStore = require('connect-mongo');
 
-// const indexRouter = require('./routes/index');
+// Client Routes
+const clientRouter = require('./routes/Client.routes');
+
+// Auth Routes
 const authRouter = require('./routes/Auth.routes');
+
+// Admin Routes
 const adminRouter = require('./routes/Admin.routes');
 const adminSliderRouter = require('./routes/Admin.slider.routes');
 const adminBrandRouter = require('./routes/Admin.brand.routes');
@@ -45,7 +50,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.authenticate('session'));
 
-app.get('/', (req, res) => res.send('Root route'))
+app.get('/', clientRouter);
 
 app.use('/api/auth', authRouter);
 app.use('/admin', adminRouter);

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <!-- Glide js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="client/css/styles.css" />
+    <title>DEVESH TRADING COMPANY</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <!-- Top Nav -->
+        <div class="top-nav">
+            <div class="container d-flex">
+                <p>Order Online Or Call Us: +91 000 000 0000</p>
+                <ul class="d-flex">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="navigation">
+            <div class="nav-center container d-flex">
+                <a href="/" class="logo">
+                    <h1>E-PAINTS</h1>
+                </a>
+
+                <ul class="nav-list d-flex">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="product.html" class="nav-link">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#terms" class="nav-link">Terms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                    <li class="icons d-flex">
+                        <a href="login.html" class="icon">
+                            <i class="bx bx-user"></i>
+                        </a>
+                        <div class="icon">
+                            <i class="bx bx-search"></i>
+                        </div>
+                        <div class="icon">
+                            <i class="bx bx-heart"></i>
+                            <span class="d-flex">0</span>
+                        </div>
+                        <a href="cart.html" class="icon">
+                            <i class="bx bx-cart"></i>
+                            <span class="d-flex">0</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="icons d-flex">
+                    <a href="login.html" class="icon">
+                        <i class="bx bx-user"></i>
+                    </a>
+                    <div class="icon">
+                        <i class="bx bx-search"></i>
+                    </div>
+                    <div class="icon">
+                        <i class="bx bx-heart"></i>
+                        <span class="d-flex">0</span>
+                    </div>
+                    <a href="cart.html" class="icon">
+                        <i class="bx bx-cart"></i>
+                        <span class="d-flex">0</span>
+                    </a>
+                </div>
+
+                <div class="hamburger">
+                    <i class="bx bx-menu-alt-left"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Categories Section -->
+    <section class="section category">
+        <div class="cat-center">
+            <div class="cat">
+                <img src="client/images/paints.jpg" alt="" />
+                <div>
+                    <p>PAINTS</p>
+                </div>
+            </div>
+            <div class="cat">
+                <img src="client/images/stencils.jpg" alt="" />
+                <div>
+                    <p>STENCILS</p>
+                </div>
+            </div>
+            <div class="cat">
+                <img src="client/images/brushes.jpg" alt="" />
+                <div>
+                    <p>TOOLS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="section new-arrival">
+        <div class="title">
+            <h1>QUICK BUY</h1>
+            <p>All Currently Available</p>
+        </div>
+
+        <div class="product-center">
+            <div class="product-item">
+                <div class="overlay">
+                    <a href="productDetails.html" class="product-thumb">
+                        <img src="client/images/apco.jpg" alt="" />
+                    </a>
+                </div>
+                <div class="product-info">
+                    <span>APCOLITE ENAMEL</span>
+                    <a href="productDetails.html">4L</a>
+                    <h4>Rs 1150</h4>
+                </div>
+                <ul class="icons">
+                    <li><i class="bx bx-heart"></i></li>
+                    <li><i class="bx bx-search"></i></li>
+                    <li><i class="bx bx-cart"></i></li>
+                </ul>
+            </div>
+            <div class="product-item">
+                <div class="overlay">
+                    <a href="" class="product-thumb">
+                        <img src="client/images/pu.png" alt="" />
+                    </a>
+                    <span class="discount">3%</span>
+                </div>
+
+                <div class="product-info">
+                    <span>PU PALETTE</span>
+                    <a href="">1L</a>
+                    <h4>Rs 1350</h4>
+                </div>
+                <ul class="icons">
+                    <li><i class="bx bx-heart"></i></li>
+                    <li><i class="bx bx-search"></i></li>
+                    <li><i class="bx bx-cart"></i></li>
+                </ul>
+            </div>
+            <div class="product-item">
+                <div class="overlay">
+                    <a href="" class="product-thumb">
+                        <img src="client/images/MT.png" alt="" />
+                    </a>
+                </div>
+                <div class="product-info">
+                    <span>METRO TEXTURE</span>
+                    <a href="">25kg</a>
+                    <h4>Rs 650</h4>
+                </div>
+                <ul class="icons">
+                    <li><i class="bx bx-heart"></i></li>
+                    <li><i class="bx bx-search"></i></li>
+                    <li><i class="bx bx-cart"></i></li>
+                </ul>
+            </div>
+            <div class="product-item">
+                <div class="overlay">
+                    <a href="" class="product-thumb">
+                        <img src="client/images/tractor-emulsion.png" alt="" />
+                    </a>
+                    <span class="discount">10%</span>
+                </div>
+                <div class="product-info">
+                    <span>TRACTOR EMULSION SHYNE</span>
+                    <a href="">4L</a>
+                    <h4>Rs 850</h4>
+                </div>
+                <ul class="icons">
+                    <li><i class="bx bx-heart"></i></li>
+                    <li><i class="bx bx-search"></i></li>
+                    <li><i class="bx bx-cart"></i></li>
+                </ul>
+            </div>
+            <div class="product-item">
+                <div class="overlay">
+                    <a href="" class="product-thumb">
+                        <img src="client/images/luxemul.jpg" alt="" />
+                    </a>
+                </div>
+                <div class="product-info">
+                    <span>ROYALE LUXURY EMULSION</span>
+                    <a href="">4L</a>
+                    <h4>Rs 2250</h4>
+                </div>
+                <ul class="icons">
+                    <li><i class="bx bx-heart"></i></li>
+                    <li><i class="bx bx-search"></i></li>
+                    <li><i class="bx bx-cart"></i></li>
+                </ul>
+            </div>
+            <div class="product-item">
+                <div class="overlay">
+                    <a href="" class="product-thumb">
+                        <img src="client/images/APE.jpg" alt="" />
+                    </a>
+                </div>
+                <div class="product-info">
+                    <span>APCOLYTE PREMIUM EMULSION</span>
+                    <a href="">4L</a>
+                    <h4>Rs 1370</h4>
+                </div>
+                <ul class="icons">
+                    <li><i class="bx bx-heart"></i></li>
+                    <li><i class="bx bx-search"></i></li>
+                    <li><i class="bx bx-cart"></i></li>
+                </ul>
+            </div>
+            <div class="product-item">
+                <div class="overlay">
+                    <a href="" class="product-thumb">
+                        <img src="client/images/AU.jpg" alt="" />
+                    </a>
+                    <span class="discount">20%</span>
+                </div>
+                <div class="product-info">
+                    <span>APEX ULTIMA</span>
+                    <a href="">4L</a>
+                    <h4>Rs 1900</h4>
+                </div>
+                <ul class="icons">
+                    <li><i class="bx bx-heart"></i></li>
+                    <li><i class="bx bx-search"></i></li>
+                    <li><i class="bx bx-cart"></i></li>
+                </ul>
+            </div>
+            <div class="product-item">
+                <div class="overlay">
+                    <a href="" class="product-thumb">
+                        <img src="client/images/bwc.jpg" alt="" />
+                    </a>
+                </div>
+                <div class="product-info">
+                    <span>BIRLA WALL PUTTY</span>
+                    <a href="">20kg</a>
+                    <h4>Rs 550</h4>
+                </div>
+                <ul class="icons">
+                    <li><i class="bx bx-heart"></i></li>
+                    <li><i class="bx bx-search"></i></li>
+                    <li><i class="bx bx-cart"></i></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Promo -->
+
+    <section class="section banner">
+        <div class="left">
+            <span class="trend">TRENDING DESIGNS</span>
+            <h1>New Collection 2022</h1>
+            <p>Just In <span class="color">Upto 20% OFF</span></p>
+            <a href="#" class="btn btn-1">View All</a>
+        </div>
+        <div class="right">
+            <img src="client/images/R.jpg" alt="">
+        </div>
+    </section>
+
+
+
+
+    <!-- Featured -->
+
+
+
+    <!-- Contact -->
+    <section class="section contact">
+        <div class="row">
+            <div class="col">
+                <h2>EXCELLENT SUPPORT</h2>
+                <p>We love our customers and they can reach us any time
+                    of day we will be at your service 24/7</p>
+                <a href="" class="btn btn-1">Contact</a>
+            </div>
+            <div class="col">
+                <form action="">
+                    <div>
+                        <input type="email" placeholder="Email Address">
+                        <a href="">Send</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="row">
+            <div class="col d-flex">
+                <h4>INFORMATION</h4>
+                <a href="">About us</a>
+                <a href="">Contact Us</a>
+                <a href="">Term & Conditions</a>
+                <a href="">Shipping Guide</a>
+            </div>
+            <div class="col d-flex">
+                <h4>USEFUL LINK</h4>
+                <a href="">Online Store</a>
+                <a href="">Customer Services</a>
+                <a href="">Promotion</a>
+                <a href="">Top Brands</a>
+            </div>
+            <div class="col d-flex">
+                <span><i class='bx bxl-facebook-square'></i></span>
+                <span><i class='bx bxl-instagram-alt'></i></span>
+                <span><i class='bx bxl-github'></i></span>
+                <span><i class='bx bxl-twitter'></i></span>
+                <span><i class='bx bxl-pinterest'></i></span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- PopUp -->
+    <div class="popup hide-popup">
+        <div class="popup-content">
+            <div class="popup-close">
+                <i class='bx bx-x'></i>
+            </div>
+            <div class="popup-left">
+                <div class="popup-img-container">
+                    <img class="popup-img" src="client/images/main.jpg" alt="popup">
+                </div>
+            </div>
+            <div class="popup-right">
+                <div class="right-content">
+                    <h1>Get Discount <span>10%</span> Off</h1>
+                    <p>Sign up to our newsletter and save 10% for your next purchase.
+                    </p>
+                    <form action="#">
+                        <input type="email" placeholder="Enter your email..." class="popup-form">
+                        <a href="#">Subscribe</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+<script src="client/js/slider.js"></script>
+<script src="client/js/index.js"></script>
+
+</html>
